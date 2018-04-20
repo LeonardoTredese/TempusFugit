@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Actions",
     "\\Actions\\Complete",
     "\\Actions\\Complete\\Common",
     "\\Actions\\Complete\\Professore",
@@ -9,6 +8,6 @@
     "\\Actions\\incomplete",
     "\\Actions\\Util"
   ],
-  "SelectedNode": "\\Actions\\Util\\UtilSUDO.php",
+  "SelectedNode": "\\Actions",
   "PreviewInSolutionExplorer": false
 }
