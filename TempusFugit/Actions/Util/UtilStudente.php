@@ -1,5 +1,7 @@
 <?php
     
+	include("UtilDB.php");
+
     class UtilStudente extends UtilDB{
         
         public function __construct(){
@@ -8,11 +10,6 @@
                 die('Connessione fallita: '.$this->db->connect_error);
             }//if 
         }//costruttore senza parametri 
-        
-        //costruttore ereditato
-        public function __construct($conn){
-            $this->$db=$conn;
-        }//costruttore
        
 /**RICHIESTE STUDENTE**/
        
