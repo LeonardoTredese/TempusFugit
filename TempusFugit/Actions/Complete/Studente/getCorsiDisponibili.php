@@ -13,7 +13,7 @@
 			$uSt->close();
 			
 			if($result){
-				$return = $result->fetch_all(MYSQL_ASSOC);
+				$return = $result->fetch_assoc();
 				echo json_encode(array_merge(array("esito"=> "ok"), $return));
 			}else{
 				$a = array('esito' => 'dberror');
