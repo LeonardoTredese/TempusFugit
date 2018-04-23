@@ -5,7 +5,7 @@
     class UtilStudente extends UtilDB{
 
         public function __construct(){
-            $this->db=new mysqli("localhost","root","","tempusfugit");
+            $this->db=new mysqli("annoiato.net","studente","IbDvwikDfB","tempusfugit");
             if ($this->db->connect_error){
                 die('Connessione fallita: '.$this->db->connect_error);
             }//if
