@@ -2,18 +2,13 @@
 	include ("../../Util/UtilStudente.php");
 
     session_start();
-	
+
     if(isset($_SESSION['ruolo'])){
-		
-        if($_SESSION['ruolo'] == 's'){ 
-		
+        if($_SESSION['ruolo'] == 's'){
 			if(!empty($_POST['idCorso'])){
 				$uSt = new UtilStudente();
-				
 				$esito = $uSt->iscrizioneCorso($_SESSION['id'], $_POST['idCorso']);
-				
 				$uSt->close();
-				
 				if($esito){
 					$a = array('esito' => 'ok');
 					echo json_encode($a);
