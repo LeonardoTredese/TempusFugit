@@ -1,10 +1,7 @@
 <?php    
      class UtilProf extends UtilDB{
         
-        //costruttore ereditato
-        public function __construct($conn){
-            $this->$db=$conn;
-        }//costruttore
+     
         
         public function __construct(){
             $this->db=new mysqli("annoiato.net","professore","UZnXcEZ40p","tempusfugit"); 
@@ -144,7 +141,7 @@
          
         //setta un' uscita di uno studente
         public function setUscita($idStudente,$idEvento,$idCorso,$oraUscita){
-            $stmt = $this->db->prepare("INSERT INTO PRESENZE(oraUscita) values(?) WHERE idAccountP=? AND idEventoP=? AND idCorsoP=?";
+            $stmt = $this->db->prepare("INSERT INTO PRESENZE(oraUscita) values(?) WHERE idAccountP=? AND idEventoP=? AND idCorsoP=?");
             $stmt->bind_param('siii',$oraUscita,$idStudente,$idEvento,$idCorsoP); 
             $stmt->execute();
             $result = $stmt->get_result();

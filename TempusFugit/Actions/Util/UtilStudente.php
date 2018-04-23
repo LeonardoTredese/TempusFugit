@@ -5,7 +5,7 @@
     class UtilStudente extends UtilDB{
         
         public function __construct(){
-            $this->db=new mysqli("annoiato.net","studente","IbDvwikDfB","tempusfugit"); 
+            $this->db=new mysqli("localhost","root","","tempusfugit"); 
             if ($this->db->connect_error){
                 die('Connessione fallita: '.$this->db->connect_error);
             }//if 
@@ -15,10 +15,12 @@
        
         /*ritorna i corsi disponibili allo studente $idUT    CONTROLLATO*/
         public function getCorsiDisp($idUt){
+
             $stmt = $this->db->prepare("SELECT P.idProfessore,C.nomeCorso FROM ISCRIZIONI as I JOIN CORSI as C ON I.idCorsoI=C.idCorso JOIN PROFESSORE as P ON C.idProf=P.idProfessore WHERE I.idAccountI <> ?");
             $stmt->bind_param('i',$idUt); 
             $stmt->execute();
             $result = $stmt->get_result();
+			$stmt->close();
             if(!$result)
                 return null;
             else 
@@ -28,9 +30,10 @@
         //ritorna tutti i corsi a cui � iscritto lo studente $idUT CONTROLLATO
         public function getCorsiIscritto($idUt){
             $stmt = $this->db->prepare("SELECT DISTINCT P.idProfessore,C.nomeCorso FROM ISCRIZIONI as I JOIN CORSI as C ON I.idCorsoI=C.idCorso JOIN PROFESSORE as P ON C.idProf=P.IdProfessore WHERE I.idAccountI=?");
-            $stmt->bind_param('i',$idUt); 
+            $stmt->bind_param("i",$idUt); 
             $stmt->execute();
             $result = $stmt->get_result();
+			$stmt->close();
             if(!$result)
                 return null;
             else 

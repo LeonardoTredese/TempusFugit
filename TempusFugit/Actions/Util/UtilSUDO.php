@@ -1,4 +1,6 @@
 <?php    
+
+	include ("UtilProf.php");
      class UtilSudo extends UtilProf{
         
         /*Eredita da util prof:
@@ -15,10 +17,7 @@
             setUscita($idStudente,$idEvento,$idCorso,$oraUscita)
         */ 
          
-        //costruttore ereditato
-        public function __construct($conn){
-            $this->$db=$conn;
-        }//costruttore
+        
          
         public function __construct(){
             $this->db=new mysqli("annoiato.net","admin","tWgGYEY6SY","tempusfugit"); 
@@ -72,7 +71,7 @@
          
         //inserisce un nuovo account prof o sudo nelle rispettive tabelle
         public function insertNotStudente($idAccountUser,$ruolo){
-            if($ruolo=='Professore')
+            if($ruolo=='Professore'){
                 $stmt = $this->db->prepare("INSERT INTO PROFESSORI (idProfessore) values (?)");
                 $stmt->bind_param('i',$idAccountUser); 
                 $stmt->execute();
@@ -81,7 +80,7 @@
                     return false;
                 else 
                     return true;
-            else if ($ruolo=='sudo'){
+            }else if ($ruolo=='sudo'){
                 $stmt = $this->db->prepare("INSERT INTO SUPERUSER (idSuperUser) values (?)");
                 $stmt->bind_param('i',$idAccountUser); 
                 $stmt->execute();
